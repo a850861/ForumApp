@@ -1,10 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { conatinerFull } from '../../CommonCss/pagecss'
+import { formHead } from '../../CommonCss/formcss'
+import Bottomnavbar from '../../Components/Bottomnavbar'
+import Topnavbar from '../../Components/Topnavbar'
 
-const Mainpage = () => {
+const Mainpage = ({Navigation}) => {
   return (
-    <View>
-      <Text>Mainpage</Text>
+    <View style={conatinerFull}>
+      <StatusBar/>
+      <Topnavbar/>
+      <Bottomnavbar/>
+      <Text style={formHead}>Mainpage</Text>
     </View>
   )
 }

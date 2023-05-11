@@ -1,10 +1,20 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-
-const EnterEmail = () => {
+import { conatinerFull, goback } from '../../../CommonCss/pagecss'
+import { formHead2, formbtn, fromInput } from '../../../CommonCss/formcss'
+const EnterEmail = ({navigation}) => {
   return (
-    <View>
-      <Text>EnterEmail</Text>
+    <View style={conatinerFull}>
+      <TouchableOpacity onPress={()=> navigation.navigate("Login")} style={goback}>
+        <Text style={{
+          color:'gray',
+          fontSize:16,
+        }
+        }>Go back</Text>
+      </TouchableOpacity>
+      <Text style={formHead2}>Verify Your Email</Text>
+      <TextInput placeholder='Enter Your Email'style={fromInput}/>
+      <Text style={formbtn} onPress={()=> navigation.navigate('EnterVerificationCode')}>Next</Text>
     </View>
   )
 }
