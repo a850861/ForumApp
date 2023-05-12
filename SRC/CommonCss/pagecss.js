@@ -29,5 +29,9 @@ module.exports={
         top:50,
         left:20,
         alignItems:'center'
+    },
+    icons1:{
+        color:'white',
+        fontSize:30,
     }
 }

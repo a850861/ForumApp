@@ -1,10 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { icons1 } from '../CommonCss/pagecss';
 
 const Bottomnavbar = () => {
   return (
     <View style={styles.conatiner}>
-      <Text>Bottomnavbar</Text>
+      <Icon name="home" size={24} color="gray" style={icons1}/>  
+      <Icon name="search" size={24} color="gray" style={icons1}/>  
+      <Icon name="heart-o" size={24} color="gray" style={icons1}/> 
+      <Icon name="user" size={24} color="gray" style={icons1}/>   
     </View>
   )
 }
@@ -16,7 +21,7 @@ const styles = StyleSheet.create({
         display:'flex',
         flexDirection:'row',
         justifyContent:'space-evenly',
-        backgroundColor:'white',
+        backgroundColor:'grey',
         borderTopLeftRadius:20,
         borderTopRightRadius:20,
         position:'absolute',

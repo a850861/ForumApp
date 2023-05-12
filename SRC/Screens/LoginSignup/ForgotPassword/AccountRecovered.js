@@ -2,13 +2,17 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 import React from 'react'
 import { conatinerFull, goback, row } from '../../../CommonCss/pagecss'
 import { formHead2, formHead3, formbtn, fromInput } from '../../../CommonCss/formcss'
+import Icon from 'react-native-vector-icons/FontAwesome';
 const AccountRecovered = ({navigation}) => {
   return (
     <View style={conatinerFull}>
       <TouchableOpacity onPress={()=> navigation.navigate("Login")} style={goback}>
+      <Icon name="arrow-left" size={20} color="gray"/>  
         <Text style={{
           color:'gray',
           fontSize:16,
+          marginLeft:5,
+          fontWeight:'bold',
         }
         }>Go back</Text>
       </TouchableOpacity>

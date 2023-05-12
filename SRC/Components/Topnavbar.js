@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { icons1 } from '../CommonCss/pagecss';
 const Topnavbar = () => {
   return (
     <View style={styles.container}>
-      <Text>Topnavbar</Text>
+      <Icon name="wechat" size={24} color="gray" style={icons1}/>  
     </View>
   )
 }
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
         position:'absolute',
         top:0,
         zIndex:100,
-        backgroundColor:'white',
+        backgroundColor:'gray',
         width:'100%',
     }
 })
