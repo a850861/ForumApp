@@ -6,18 +6,18 @@ import Bottomnavbar from '../../Components/Bottomnavbar'
 import Topnavbar from '../../Components/Topnavbar'
 import FollowersRandomPost from '../../Components/FollowersRandomPost'
 
-const Mainpage = ({navigation}) => {
+const  My_UserProfile = ({navigation}) => {
   return (
     <View style={styles.conatiner}>
       <StatusBar/>
-      <Topnavbar navigation={navigation} page={"Mainpage"}/>
-      <Bottomnavbar navigation={navigation} page={"Mainpage"}/>
-      <FollowersRandomPost/>
+      <Topnavbar navigation={navigation}/>
+      <Bottomnavbar navigation={navigation} page={"My_UserProfile"}/>
+      <Text style={formHead}>Your Profile</Text>
     </View>
   )
 }
 
-export default Mainpage
+export default  My_UserProfile
 
 const styles = StyleSheet.create({
   conatiner:{
@@ -29,3 +29,9 @@ const styles = StyleSheet.create({
 
   }
 })
+
+
+
+
+
+

@@ -13,6 +13,10 @@ import ChoosePassword from './SRC/Screens/LoginSignup/ForgotPassword/ChoosePassw
 import EnterEmail from './SRC/Screens/LoginSignup/ForgotPassword/EnterEmail';
 import EnterVerificationCode from './SRC/Screens/LoginSignup/ForgotPassword/EnterVerificationCode';
 import Mainpage from './SRC/Screens/Mainpage/Mainpage';
+import SearchUserPage from './SRC/Screens/Mainpage/SearchUserPage';
+import Notification from './SRC/Screens/Mainpage/Notification';
+import My_UserProfile from './SRC/Screens/Profile/My_UserProfile';
+import All_Chats from './SRC/Screens/ChatSection/All_Chats';
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
@@ -31,7 +35,17 @@ const App = () => {
          <Stack.Screen name="ChoosePassword" component={ChoosePassword} />
          <Stack.Screen name="EnterEmail" component={EnterEmail} />
          <Stack.Screen name="EnterVerificationCode" component={EnterVerificationCode} />
-         <Stack.Screen name="MainPage" component={Mainpage} />
+         <Stack.Screen name="All_Chats" component={All_Chats} 
+         options={{
+          animation:'slide_from_bottom'
+         }}/>
+         <Stack.Screen name="Mainpage" component={Mainpage} />
+         <Stack.Screen name="SearchUserPage" component={SearchUserPage} 
+         options={{
+          animation:'slide_from_bottom'
+         }}/>
+         <Stack.Screen name="NotificationPage" component={Notification}/>
+         <Stack.Screen name="My_UserProfile" component={My_UserProfile}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

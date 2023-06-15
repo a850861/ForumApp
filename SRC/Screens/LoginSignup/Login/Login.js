@@ -10,7 +10,7 @@ const Login = ({navigation}) => {
       <TextInput placeholder='Enter Your Email' style={fromInput}/>
       <TextInput placeholder='Enter Your Password' style={fromInput} secureTextEntry={true}/>
       <Text style={formTextLinkRight} onPress={()=>navigation.navigate('EnterEmail')}>Forgot Password?</Text>
-      <Text style={formbtn} onPress={()=> navigation.navigate('MainPage')}>Submit</Text>
+      <Text style={formbtn} onPress={()=> navigation.navigate('Mainpage')}>Submit</Text>
       <View style={hr80}></View>
       <Text style={formTextLinkRight}>Don't have an account<Text style={{color:'white'}} onPress={()=>navigation.navigate('Signup_EnterEmail')}>SignUp</Text>
       </Text>

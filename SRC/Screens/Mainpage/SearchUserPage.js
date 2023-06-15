@@ -1,4 +1,4 @@
-import { StatusBar, StyleSheet, Text, View } from 'react-native'
+import { StatusBar, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import { conatinerFull } from '../../CommonCss/pagecss'
 import { formHead } from '../../CommonCss/formcss'
@@ -6,18 +6,19 @@ import Bottomnavbar from '../../Components/Bottomnavbar'
 import Topnavbar from '../../Components/Topnavbar'
 import FollowersRandomPost from '../../Components/FollowersRandomPost'
 
-const Mainpage = ({navigation}) => {
+const SearchUserPage = ({navigation}) => {
   return (
     <View style={styles.conatiner}>
       <StatusBar/>
-      <Topnavbar navigation={navigation} page={"Mainpage"}/>
-      <Bottomnavbar navigation={navigation} page={"Mainpage"}/>
-      <FollowersRandomPost/>
+      <Topnavbar navigation={navigation}/>
+      <Bottomnavbar navigation={navigation}page={"SearchUserPage"}/>
+      <Text style={formHead}>Search User</Text>
+      <TextInput placeholder='Search By Username..' style={styles.searchbar}></TextInput>
     </View>
   )
 }
 
-export default Mainpage
+export default SearchUserPage
 
 const styles = StyleSheet.create({
   conatiner:{
@@ -27,5 +28,11 @@ const styles = StyleSheet.create({
     paddingVertical:50,
 
 
+  },
+  searchbar:{
+    
   }
 })
+
+
+
