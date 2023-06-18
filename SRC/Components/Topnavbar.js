@@ -11,6 +11,13 @@ const Topnavbar = ({navigation,page}) => {
         onPress={()=>navigation.navigate('All_Chats')}/>  
 
       }
+
+{
+        page==='My_UserProfile'&&
+        <Icon name="gear" size={24} color="gray" style={icons1}
+        onPress={()=>navigation.navigate('Settings1')}/>  
+
+      }
       
     </View>
   )
