@@ -70,8 +70,13 @@ const Signup_ChoosePassword = ({navigation,route}) => {
       <TextInput placeholder='Confirm password'style={fromInput} secureTextEntry
       onChangeText={(text)=>setConfirmpassword(text)}
       />
-      
+      {
+        setLoading?
+        <ActivityIndicator size={'large'} color={'white'}/>
+        :
         <Text style={formbtn} onPress={()=>handlePassword() }>Next</Text>
+      }
+        
       
     </View>
   )
