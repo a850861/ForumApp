@@ -71,7 +71,7 @@ const Signup_ChoosePassword = ({navigation,route}) => {
       onChangeText={(text)=>setConfirmpassword(text)}
       />
       {
-        setLoading?
+        loading?
         <ActivityIndicator size={'large'} color={'white'}/>
         :
         <Text style={formbtn} onPress={()=>handlePassword() }>Next</Text>
