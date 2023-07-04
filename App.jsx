@@ -26,6 +26,7 @@ const App = () => {
         {headerShown: false,
           animation:'slide_from_right'
       }}>
+        <Stack.Screen name="Mainpage" component={Mainpage} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup_EnterEmail" component={Signup_EnterEmail} />
         <Stack.Screen name="Signup_EnterVerificationCode" component={Signup_EnterVerificationCode} />
@@ -40,7 +41,7 @@ const App = () => {
          options={{
           animation:'slide_from_bottom'
          }}/>
-         <Stack.Screen name="Mainpage" component={Mainpage} />
+         
          <Stack.Screen name="SearchUserPage" component={SearchUserPage} 
          options={{
           animation:'slide_from_bottom'

@@ -2,6 +2,7 @@ import { ActivityIndicator, StyleSheet, Text, TextInput, View } from 'react-nati
 import React, { useState } from 'react'
 import { conatinerFull, hr80 } from '../../../CommonCss/pagecss'
 import { formHead, formTextLinkRight, formbtn, fromInput } from '../../../CommonCss/formcss'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Login = ({navigation}) => {
   const [password,setpassword]=useState('')
@@ -21,13 +22,15 @@ const Login = ({navigation}) => {
           'Content-Type':'application/json'
         },
         body:JSON.stringify({email:email,password:password})
-      }).then(res=>res.json()).then(data=>{
+      }).then(res=>res.json()).then(async data=>{
         if(data.message=="Successfully Signed In"){
           setLoading(false)
           alert(data.message)
+          await AsyncStorage.setItem('user',JSON.stringify(data))
           navigation.navigate('Mainpage',{
             data
           })
+         
           
 
 
