@@ -45,7 +45,8 @@ const  My_UserProfile = ({navigation}) => {
     fetch('http://10.0.2.2:3000/userdata',{
       method:'POST',
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'Authorization':'Bearer ' + JSON.parse(value).token
       },
       body:JSON.stringify({email:JSON.parse(value).user.email})
       })
@@ -56,7 +57,7 @@ const  My_UserProfile = ({navigation}) => {
               setUserdata(data.user)
             }
             else{
-              alert('Something went wrong')
+              alert('Login Again')
               navigation.navigate('Login')
             }
 
@@ -70,35 +71,35 @@ const  My_UserProfile = ({navigation}) => {
   },[])
 
     console.log(userdata)
-      const data={
-    username:'chetan123',
-    followers:1100,
-    following:1500,
-    description:'I am a software developer and i love to code',
-    profile_image:"https://picsum.photos/500/500",
-    posts:[
-      {
-        id:1,
-        post_image:'https://picsum.photos/400/400',
-      },
-      {
-        id:2,
-        post_image:'https://picsum.photos/300/300',
-      },
-      {
-        id:3,
-        post_image:'https://picsum.photos/200/200',
-      },
-      {
-        id:4,
-        post_image:'https://picsum.photos/250/150',
-      },
-      {
-        id:5,
-        post_image:'https://picsum.photos/550/550',
-      },
-    ]
-  }
+  //     const data={
+  //   username:'chetan123',
+  //   followers:1100,
+  //   following:1500,
+  //   description:'I am a software developer and i love to code',
+  //   profile_image:"https://picsum.photos/500/500",
+  //   posts:[
+  //     {
+  //       id:1,
+  //       post_image:'https://picsum.photos/400/400',
+  //     },
+  //     {
+  //       id:2,
+  //       post_image:'https://picsum.photos/300/300',
+  //     },
+  //     {
+  //       id:3,
+  //       post_image:'https://picsum.photos/200/200',
+  //     },
+  //     {
+  //       id:4,
+  //       post_image:'https://picsum.photos/250/150',
+  //     },
+  //     {
+  //       id:5,
+  //       post_image:'https://picsum.photos/550/550',
+  //     },
+  //   ]
+  // }
   return (
     <View style={styles.conatiner}>
       <StatusBar/>

@@ -11,7 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 const Mainpage = ({navigation}) => {
   const [userdata,setUserdata]=useState(null)
  useEffect(()=>{
-  AsyncStorage.getItem('user').then(data=>{
+   AsyncStorage.getItem('user').then(data=>{
     // console.log(data)
     setUserdata(JSON.parse(data))
   }).catch(err=>alert(err))
