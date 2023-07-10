@@ -13,8 +13,10 @@ const EditProfile = ({navigation}) => {
         />
       <Text style={formHead}>Edit Profile</Text>
       <Text style={styles.txt1}>Change Profile</Text>
-      <Text style={styles.txt1}>Change Username</Text>
-      <Text style={styles.txt1}>Change Description</Text>
+      <Text style={styles.txt1}
+      onPress={()=> navigation.navigate('ChangeUsername')}>Change Username</Text>
+      <Text style={styles.txt1}
+      onPress={()=> navigation.navigate('ChangeDescription')}>Change Description</Text>
      
     </View>
   )

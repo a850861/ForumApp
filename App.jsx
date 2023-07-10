@@ -20,6 +20,8 @@ import All_Chats from './SRC/Screens/ChatSection/All_Chats';
 import Settings1 from './SRC/Screens/Settings/Settings1';
 import ChangePassword from './SRC/Screens/Settings/ChangePassword';
 import EditProfile from './SRC/Screens/Settings/EditProfile';
+import ChangeUsername from './SRC/Screens/Settings/ChangeUsername';
+import ChangeDescription from './SRC/Screens/Settings/ChangeDescription';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -54,6 +56,10 @@ const App = () => {
          <Stack.Screen name='Settings1' component={Settings1}/>
          <Stack.Screen name='ChangePassword' component={ChangePassword}/>
          <Stack.Screen name='EditProfile' component={EditProfile}/>
+         <Stack.Screen name='ChangeUsername' component={ChangeUsername}/>
+         <Stack.Screen name='ChangeDescription' component={ChangeDescription}/>
+
+
 
    
       </Stack.Navigator>
