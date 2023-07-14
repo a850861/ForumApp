@@ -12,7 +12,8 @@ const EditProfile = ({navigation}) => {
       onPress={()=> navigation.navigate('Settings1')}
         />
       <Text style={formHead}>Edit Profile</Text>
-      <Text style={styles.txt1}>Change Profile</Text>
+      <Text style={styles.txt1}
+      onPress={()=> navigation.navigate('UploadProfilePic')}>Change Profile</Text>
       <Text style={styles.txt1}
       onPress={()=> navigation.navigate('ChangeUsername')}>Change Username</Text>
       <Text style={styles.txt1}

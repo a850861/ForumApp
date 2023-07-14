@@ -7,6 +7,8 @@ import Topnavbar from '../../Components/Topnavbar'
 import FollowersRandomPost from '../../Components/FollowersRandomPost'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import nopic from '../../../assets/nopic.png'
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 const  My_UserProfile = ({navigation}) => {
   // const data={
   //   username:'chetan123',
@@ -38,36 +40,39 @@ const  My_UserProfile = ({navigation}) => {
   //   ]
   // }
   const [userdata,setUserdata]=useState(null)
- useEffect(()=>{
-  AsyncStorage.getItem('user').then(async (value)=>{
-    // console.log(data)
-    // setUserdata(JSON.parse(data))
-    fetch('http://10.0.2.2:3000/userdata',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'Authorization':'Bearer ' + JSON.parse(value).token
-      },
-      body:JSON.stringify({email:JSON.parse(value).user.email})
+  const loaddata=async()=>{
+    AsyncStorage.getItem('user').then(async (value)=>{
+      // console.log(data)
+      // setUserdata(JSON.parse(data))
+      fetch('http://10.0.2.2:3000/userdata',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization':'Bearer ' + JSON.parse(value).token
+        },
+        body:JSON.stringify({email:JSON.parse(value).user.email})
+        })
+        .then(res=>res.json())
+        .then( data=>{
+              
+              if(data.message=="User Found"){
+                setUserdata(data.user)
+              }
+              else{
+                alert('Login Again')
+                navigation.navigate('Login')
+              }
+  
+        }).catch(err=>{
+          navigation.navigate('Login')
       })
-      .then(res=>res.json())
-      .then( data=>{
-            
-            if(data.message=="User Found"){
-              setUserdata(data.user)
-            }
-            else{
-              alert('Login Again')
-              navigation.navigate('Login')
-            }
-
-      }).catch(err=>{
+      })
+      .catch(err=>{
         navigation.navigate('Login')
-    })
-    })
-    .catch(err=>{
-      navigation.navigate('Login')
-    })
+      })
+  }
+ useEffect(()=>{
+  loaddata()
   },[])
 
     console.log(userdata)
@@ -105,14 +110,21 @@ const  My_UserProfile = ({navigation}) => {
       <StatusBar/>
       <Topnavbar navigation={navigation} page={"My_UserProfile"}/>
       <Bottomnavbar navigation={navigation} page={"My_UserProfile"}/>
+      <Icon name="refresh" size={25} color="white"
+      style={styles.refresh}
+      onPress={()=> loaddata()}
+      />  
+
       
       {
         userdata?
         <ScrollView>
         <View style={styles.c1}>
           {
-            userdata.profilepic>0?
+            userdata.profilepic?
+           
             <Image style={styles.profilepic} source={{uri:userdata.profilepic}}/>
+           
             :
             <Image style={styles.profilepic} source={nopic}/>
           }
@@ -250,6 +262,13 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     height:200
+
+  },
+  refresh:{
+    position:'absolute',
+    top:50,
+    right:5,
+    zIndex:1
 
   }
 })
