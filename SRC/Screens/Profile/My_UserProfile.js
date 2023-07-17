@@ -159,11 +159,11 @@ const  My_UserProfile = ({navigation}) => {
         <Text style={styles.txt}>Your Post</Text>
         <View style={styles.c13}>
           {
-            data.posts.map(
+            userdata.posts?.map(
               (item)=>{
                 return(
-                  <Image key={item.id} style={styles.postpic}
-                  source={{uri:item.post_image}}/>
+                  <Image key={item.post} style={styles.postpic}
+                  source={{uri:item.post}}/>
                 )
               }
             )
