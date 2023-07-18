@@ -85,7 +85,7 @@ const AddPost = ({navigation}) => {
     // navigation.navigate('Signup_ChoosePassword')ß
   return (
     <View style={conatinerFull}>
-      <TouchableOpacity onPress={()=> navigation.navigate("EditProfile")} style={goback}>
+      <TouchableOpacity onPress={()=> navigation.navigate("My_UserProfile")} style={goback}>
       <Icon name="arrow-left" size={20} color="gray"/>  
         <Text style={{
           color:'gray',

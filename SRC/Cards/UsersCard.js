@@ -1,15 +1,23 @@
-import { StyleSheet, Text, View,Image } from 'react-native'
+import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-
-const UsersCard = ({user}) => {
+import nopic from '../../assets/nopic.png'
+const UsersCard = ({user,navigation}) => {
   return (
-    <View style={styles.container}>
-       <Image source={{uri:user.profile_Image}}style={styles.image} />
+   <TouchableOpacity onPress={()=>
+   navigation.navigate('Other_UserProfile',{user:user})}>
+     <View style={styles.container}>
+     {
+      user.profilepic?
+      <Image source={{uri:user.profilepic}}style={styles.image} />
+      :
+      <Image source={nopic}style={styles.image} />
+     }
       <View style={styles.c1}>
         <Text style={styles.username}>{user.username}</Text>
        
       </View>
     </View>
+   </TouchableOpacity>
   )
 }
 
