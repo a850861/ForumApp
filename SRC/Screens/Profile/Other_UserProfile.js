@@ -14,6 +14,7 @@ const  Other_UserProfile = ({navigation,route}) => {
   const [userdata,setUserdata]=useState(null)
   const {user}=route.params
 //   console.log(user)
+
   const loaddata=async()=>{
     fetch('http://10.0.2.2:3000/otheruserdata',{
         method:'POST',
@@ -27,6 +28,8 @@ const  Other_UserProfile = ({navigation,route}) => {
         if(data.message=="User Found")
         {
             setUserdata(data.user)
+            ismyprofile(data.user)
+            CheckFollow(data.user)
         }
         else{
             alert('User Not Found')
@@ -45,6 +48,52 @@ const  Other_UserProfile = ({navigation,route}) => {
   },[])
 
     console.log(userdata)
+    const[issameuser,setIssameuser]=useState(false)
+    const ismyprofile=async(otherprofile)=>{
+        AsyncStorage.getItem('user').then((loggeduser)=>{
+            const loggeduserobj=JSON.parse(loggeduser)
+            if(loggeduserobj.user.email==otherprofile.email){
+                setIssameuser(true)
+                console.log('same user')
+
+            }
+            else{
+                setIssameuser(false)
+                console.log('other user')
+
+            }
+        })
+    }
+    const[isfollowing,setIsfollowing]=useState(false)
+    const CheckFollow=async(otheruser)=>{
+        AsyncStorage.getItem('user').then((loggeduser)=>{
+            const loggeduserobj=JSON.parse(loggeduser)
+            fetch('http://10.0.2.2:3000/checkfollow',{
+                method:"POST",
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    followfrom:loggeduserobj.user.email,
+                    followto:otheruser.email
+                })
+            })
+            .then(res=>res.json())
+    .then(data=>{
+        if(data.message=="User in following list"){
+            setIsfollowing(true)
+        }
+        else if(data.message=="User not in following list"){
+            setIsfollowing(false)
+        }
+        else{
+            alert("Something Went Wrong")
+        }
+    })
+    })
+    
+}
+
   
   return (
     <View style={styles.conatiner}>
@@ -70,12 +119,19 @@ const  Other_UserProfile = ({navigation,route}) => {
             <Image style={styles.profilepic} source={nopic}/>
           }
                     <Text style={styles.txt}>@{userdata.username}</Text>
-          <View style={styles.row}>
+          {
+            !issameuser&&<View style={styles.row}>
+           {
+            isfollowing?
+            <Text style={styles.follow}>Followed</Text>
+            :
             <Text style={styles.follow}>Follow</Text>
+           }
             <Text style={styles.message}>Message</Text>
 
 
           </View>
+          }
           <View style={styles.c11}>
             <View style={styles.c111}>
               <Text style={styles.txt1}>Followers</Text>
@@ -103,7 +159,7 @@ const  Other_UserProfile = ({navigation,route}) => {
        {
         userdata.posts.length>0?
         <View style={styles.c1}>
-        <Text style={styles.txt}>Your Post</Text>
+        <Text style={styles.txt}>Posts</Text>
         <View style={styles.c13}>
           {
             userdata.posts?.map(
