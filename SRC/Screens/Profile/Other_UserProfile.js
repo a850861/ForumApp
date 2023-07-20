@@ -93,6 +93,60 @@ const  Other_UserProfile = ({navigation,route}) => {
     })
     
 }
+const FollowThisUser=async(otheruser)=>{
+    console.log('follow this user ',otheruser)
+    const loggeduser=await AsyncStorage.getItem('user')
+    const loggeduserobj=JSON.parse(loggeduser)
+    fetch('http://10.0.2.2:3000/followuser',{
+        method:"POST",
+        headers:{
+        'Content-Type':"application/json"
+
+        },
+        body:JSON.stringify({
+            followfrom:loggeduserobj.user.email,
+            followto:otheruser.email
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        if(data.message=='User Followed'){
+            setIsfollowing(true)
+            loaddata()
+        }
+        else{
+            alert('Something Went Wrong')
+        }
+    })
+
+}
+const UnfollowThisUser=async (otheruser)=>{
+    console.log('follow this user ',otheruser)
+    const loggeduser=await AsyncStorage.getItem('user')
+    const loggeduserobj=JSON.parse(loggeduser)
+    fetch('http://10.0.2.2:3000/unfollowuser',{
+        method:"POST",
+        headers:{
+        'Content-Type':"application/json"
+
+        },
+        body:JSON.stringify({
+            followfrom:loggeduserobj.user.email,
+            followto:otheruser.email
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        if(data.message=='Not Following'){
+            setIsfollowing(false)
+            loaddata()
+        }
+        else{
+            alert('Something Went Wrong')
+        }
+    })
+}
+
 
   
   return (
@@ -123,9 +177,14 @@ const  Other_UserProfile = ({navigation,route}) => {
             !issameuser&&<View style={styles.row}>
            {
             isfollowing?
-            <Text style={styles.follow}>Followed</Text>
+            <Text style={styles.follow}
+            onPress={()=> UnfollowThisUser(userdata)}
+            >UnFollow</Text>
+           
             :
-            <Text style={styles.follow}>Follow</Text>
+            <Text style={styles.follow}
+            onPress={()=> FollowThisUser(userdata)}
+            >Follow</Text>
            }
             <Text style={styles.message}>Message</Text>
 
@@ -156,7 +215,10 @@ const  Other_UserProfile = ({navigation,route}) => {
         <Text style={styles.description}>No description</Text>
        }
         </View>
-       {
+      {
+        isfollowing||issameuser?
+        <View>
+             {
         userdata.posts.length>0?
         <View style={styles.c1}>
         <Text style={styles.txt}>Posts</Text>
@@ -178,6 +240,14 @@ const  Other_UserProfile = ({navigation,route}) => {
         <Text style={styles.c2}>You have not posted anything yet</Text>
       </View>
        }
+        </View>
+        :
+        <View style={styles.c2}>
+            <Text style={styles.txt1}>Follow to see posts</Text>
+
+        </View>
+
+      }
       </ScrollView>
         :
         <ActivityIndicator size={'large'} color={'white'}/>
