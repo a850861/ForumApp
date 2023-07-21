@@ -186,7 +186,11 @@ const UnfollowThisUser=async (otheruser)=>{
             onPress={()=> FollowThisUser(userdata)}
             >Follow</Text>
            }
-            <Text style={styles.message}>Message</Text>
+            <Text style={styles.message}
+            onPress={()=>navigation.navigate('MessagePage',{
+                fuseremail:userdata.email
+            })}
+            >Message</Text>
 
 
           </View>
