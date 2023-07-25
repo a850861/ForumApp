@@ -188,7 +188,8 @@ const UnfollowThisUser=async (otheruser)=>{
            }
             <Text style={styles.message}
             onPress={()=>navigation.navigate('MessagePage',{
-                fuseremail:userdata.email
+                fuseremail:userdata.email,
+                fuserid:userdata._id
             })}
             >Message</Text>
 
